@@ -23,7 +23,7 @@ public class CarController {
 
   @PostMapping
   public ResponseEntity<CarDto> createCar(@RequestBody CarDto carDto){
-    log.info("Performing operation named query with parameter");
+    log.info("Create Car Request");
 
     CarDto cat = carService.createCar(carDto);
 
