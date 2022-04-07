@@ -1,0 +1,1 @@
+insert into author values(101, 'Anurag');

@@ -8,7 +8,7 @@ import lombok.Data;
 @Builder
 public class CarDto {
 
-  private Long id;
+  private Long car_id;
 
   private String maker;
 

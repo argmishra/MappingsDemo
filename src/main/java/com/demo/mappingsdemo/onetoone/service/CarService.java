@@ -1,10 +1,13 @@
 package com.demo.mappingsdemo.onetoone.service;
 
 
+import com.demo.mappingsdemo.exception.DriverNotFoundException;
 import com.demo.mappingsdemo.onetoone.dao.CarDao;
 import com.demo.mappingsdemo.onetoone.dto.CarDto;
 import com.demo.mappingsdemo.onetoone.mapper.CarMapper;
 import com.demo.mappingsdemo.onetoone.model.Car;
+import com.demo.mappingsdemo.onetoone.model.Driver;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -41,8 +44,9 @@ public class CarService {
   }
 
   public Car getCarById(Long carId){
-    // Add Exception
-    return carDao.findById(carId).get();
+    Optional<Car> car  = carDao.findById(carId);
+    car.orElseThrow(() -> new DriverNotFoundException("Car id "+ carId + " not found" ));
+    return car.get();
   }
 
 }

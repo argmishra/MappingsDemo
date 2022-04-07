@@ -4,6 +4,7 @@ import com.demo.mappingsdemo.onetoone.dto.CarDto;
 import com.demo.mappingsdemo.onetoone.dto.DriverDto;
 import com.demo.mappingsdemo.onetoone.service.CarService;
 import com.demo.mappingsdemo.onetoone.service.DriverService;
+import org.springframework.cache.annotation.Cacheable;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
