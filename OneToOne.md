@@ -1,19 +1,9 @@
-1. Create Car without Driver
-```curl
+1. Create Car without Driver - Yes
+2. Get Car without Driver - Yes
+3. Update Car without Driver - Yes
+4. Delete Car without Driver - Yes
 
-```
-3. Get Car without Driver
-4. Update Car without Driver
-5. Delete Car without Driver
-
-6. Create Car with Driver
-7. Get Car with Driver
-8. Update Car and Driver
-9. Delete Car with Driver
-
-10. Create Driver without Car
-11. Create Driver with Car
-
-12. Get Driver 
-13. Update Driver
-14. Delete Driver
+5. Create Driver - Yes
+6. Get Driver - Yes
+7. Update Driver - Yes
+8. Delete Driver - Yes

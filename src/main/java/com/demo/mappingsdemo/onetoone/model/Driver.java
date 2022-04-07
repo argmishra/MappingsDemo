@@ -2,16 +2,22 @@ package com.demo.mappingsdemo.onetoone.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity(name = "driver")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Driver {
 
   @Column(name = "id")
@@ -23,8 +29,10 @@ public class Driver {
   private String name;
 
   @Column(name = "age")
-  private int age;
+  private Long age;
 
-  @OneToOne(mappedBy = "driver")
+  @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "car_id", nullable = false)
   private Car car;
+
 }

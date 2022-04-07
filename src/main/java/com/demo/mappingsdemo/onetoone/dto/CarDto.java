@@ -1,13 +1,6 @@
 package com.demo.mappingsdemo.onetoone.dto;
 
-import com.demo.mappingsdemo.onetoone.model.Driver;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
@@ -21,5 +14,6 @@ public class CarDto {
 
   private String registration;
 
-  private Driver driver;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private DriverDto driver;
 }

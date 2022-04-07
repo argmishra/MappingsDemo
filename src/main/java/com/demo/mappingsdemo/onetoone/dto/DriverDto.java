@@ -11,6 +11,5 @@ public class DriverDto {
 
   private String name;
 
-  private int age;
-
+  private Long age;
 }
