@@ -2,6 +2,7 @@ package com.demo.mappingsdemo.onetoone.mapper;
 
 import com.demo.mappingsdemo.onetoone.dto.CarDto;
 import com.demo.mappingsdemo.onetoone.model.Car;
+import java.util.List;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,4 +22,8 @@ public interface CarMapper {
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   @Mappings({@Mapping(target="id", source="car_id")})
   void updateCarFromCarDto(CarDto carDto, @MappingTarget Car car);
+
+  @Mappings({@Mapping(target="car_id", source="source.id")})
+  List<CarDto> map(List<Car> source);
+
 }

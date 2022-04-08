@@ -7,6 +7,7 @@ import com.demo.mappingsdemo.onetoone.dto.CarDto;
 import com.demo.mappingsdemo.onetoone.mapper.CarMapper;
 import com.demo.mappingsdemo.onetoone.model.Car;
 import com.demo.mappingsdemo.onetoone.model.Driver;
+import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -47,6 +48,11 @@ public class CarService {
     Optional<Car> car  = carDao.findById(carId);
     car.orElseThrow(() -> new DriverNotFoundException("Car id "+ carId + " not found" ));
     return car.get();
+  }
+
+  public List<CarDto> getAllCar(){
+    List<Car> carlist = carDao.findAll();
+    return carMapper.map(carlist);
   }
 
 }

@@ -4,6 +4,7 @@ import com.demo.mappingsdemo.onetoone.dto.CarDto;
 import com.demo.mappingsdemo.onetoone.dto.DriverDto;
 import com.demo.mappingsdemo.onetoone.service.CarService;
 import com.demo.mappingsdemo.onetoone.service.DriverService;
+import java.util.List;
 import org.springframework.cache.annotation.Cacheable;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -66,5 +67,11 @@ public class CarController {
     return new ResponseEntity<>(driver, HttpStatus.CREATED);
   }
 
+  @GetMapping
+  public ResponseEntity<List<CarDto>> getAllCar(){
+    log.info("Get All Car Request ");
+    List<CarDto> catList = carService.getAllCar();
+    return new ResponseEntity<>(catList, HttpStatus.OK);
+  }
 
 }
