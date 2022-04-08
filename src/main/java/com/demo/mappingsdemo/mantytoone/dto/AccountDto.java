@@ -19,5 +19,5 @@ public class AccountDto {
 
   private int number;
 
-  private Branch branch;
+  private BranchDto branch;
 }
