@@ -6,7 +6,6 @@ import com.demo.mappingsdemo.onetoone.dao.CarDao;
 import com.demo.mappingsdemo.onetoone.dto.CarDto;
 import com.demo.mappingsdemo.onetoone.mapper.CarMapper;
 import com.demo.mappingsdemo.onetoone.model.Car;
-import com.demo.mappingsdemo.onetoone.model.Driver;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

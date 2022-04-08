@@ -37,5 +37,19 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
   }
 
+  @ExceptionHandler(BookNotFoundException.class)
+  public final ResponseEntity<Object> handleBookNotFoundException(Exception ex, WebRequest request) {
+    ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+        request.getDescription(false));
+    return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+  }
+
+  @ExceptionHandler(PageNotFoundException.class)
+  public final ResponseEntity<Object> handlePageNotFoundException(Exception ex, WebRequest request) {
+    ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+        request.getDescription(false));
+    return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+  }
+
 
 }
