@@ -1,6 +1,7 @@
 package com.demo.mappingsdemo.manytomany.controller;
 
 import com.demo.mappingsdemo.manytomany.dto.CourseDto;
+import com.demo.mappingsdemo.manytomany.dto.StudentDto;
 import com.demo.mappingsdemo.manytomany.service.CourseService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,10 +53,30 @@ public class CourseController {
     return new ResponseEntity<>(courseList, HttpStatus.OK);
   }
 
+  @PutMapping("/{courseId}/{studentId}")
+  public ResponseEntity<Void> addCourseToStudent(@PathVariable Long studentId, @PathVariable Long courseId){
+    log.info("Add student id {} to course id {}", courseId, studentId);
+    courseService.addCourseToStudent(studentId, courseId);
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
 
-  // Join Course with student
-  // Get Courses of students
-  // Delete Course from student
+  @GetMapping("/{courseId}/students")
+  public ResponseEntity<List<StudentDto>> getStudentsOfCourses(@PathVariable Long courseId){
+    log.info("Get Students of course id :{} ", courseId);
+    List<StudentDto> student = courseService.getStudentsOfCourses(courseId);
+    return new ResponseEntity<>(student, HttpStatus.OK);
+  }
+
+  @DeleteMapping("/{courseId}/{studentId}")
+  public ResponseEntity<Void> deleteCourseFromStudent(@PathVariable Long studentId, @PathVariable Long courseId){
+    log.info("Delete student id {} to course id {}", courseId, studentId);
+    courseService.deleteCourseFromStudent(studentId, courseId);
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
+
+  // Join Course with student - Possible by addCourseToStudent
+  // Get Courses of students - Possible using getStudentsOfCourses method
+  // Delete Course from student - Possible using deleteCourseFromStudent method
 
 
 }

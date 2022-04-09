@@ -1,8 +1,6 @@
 package com.demo.mappingsdemo.manytomany.controller;
 
-import com.demo.mappingsdemo.mantytoone.dto.AccountDto;
-import com.demo.mappingsdemo.mantytoone.dto.BranchDto;
-import com.demo.mappingsdemo.mantytoone.service.AccountService;
+import com.demo.mappingsdemo.manytomany.dto.CourseDto;
 import com.demo.mappingsdemo.manytomany.dto.StudentDto;
 import com.demo.mappingsdemo.manytomany.service.StudentService;
 import java.util.List;
@@ -41,7 +39,7 @@ public class StudentController {
   }
 
   @DeleteMapping("/{studentId}")
-  public ResponseEntity<StudentDto> deleteStudent(@PathVariable Long studentId){
+  public ResponseEntity<Void> deleteStudent(@PathVariable Long studentId){
     log.info("Delete Student Request for id : {}", studentId);
     studentService.deleteStudent(studentId);
     return new ResponseEntity(HttpStatus.OK);
@@ -54,9 +52,15 @@ public class StudentController {
     return new ResponseEntity<>(studentList, HttpStatus.OK);
   }
 
-  // Join student with Course
-  // Get student for Courses
-  // Delete Course from student
+  @GetMapping("/{studentId}/courses")
+  public ResponseEntity<List<CourseDto>> getCoursesOfStudent(@PathVariable Long studentId){
+    log.info("Get Courses of Student id :{} ", studentId);
+    List<CourseDto> course = studentService.getCoursesOfStudent(studentId);
+    return new ResponseEntity<>(course, HttpStatus.OK);
+  }
 
+  // Join student with Course - Not Possible
+  // Get student for Courses - Possible using getCoursesOfStudent method
+  // Delete Course from student - Possible using deleteCourseFromStudent method
 
 }

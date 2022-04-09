@@ -3,6 +3,7 @@ package com.demo.mappingsdemo.manytomany.mapper;
 import com.demo.mappingsdemo.manytomany.dto.StudentDto;
 import com.demo.mappingsdemo.manytomany.model.Student;
 import java.util.List;
+import java.util.Set;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,4 +16,6 @@ public interface StudentMapper {
   StudentDto map(Student source);
 
   List<StudentDto> map(List<Student> source);
+
+  List<StudentDto> map(Set<Student> source);
 }

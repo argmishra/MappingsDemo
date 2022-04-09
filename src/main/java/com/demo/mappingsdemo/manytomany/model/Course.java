@@ -13,7 +13,9 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "course")
@@ -34,6 +36,8 @@ public class Course {
   @Column(name = "title")
   private String title;
 
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   @ManyToMany(mappedBy = "course", fetch = FetchType.LAZY)
   private Set<Student> student = new HashSet<>();
 }

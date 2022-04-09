@@ -3,6 +3,7 @@ package com.demo.mappingsdemo.manytomany.mapper;
 import com.demo.mappingsdemo.manytomany.dto.CourseDto;
 import com.demo.mappingsdemo.manytomany.model.Course;
 import java.util.List;
+import java.util.Set;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,4 +16,6 @@ public interface CourseMapper {
   CourseDto map(Course source);
 
   List<CourseDto> map(List<Course> source);
+
+  List<CourseDto> map(Set<Course> source);
 }
