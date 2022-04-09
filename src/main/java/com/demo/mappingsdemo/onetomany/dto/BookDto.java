@@ -1,6 +1,5 @@
 package com.demo.mappingsdemo.onetomany.dto;
 
-import com.demo.mappingsdemo.onetomany.model.Page;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Set;
 import lombok.Builder;

@@ -2,10 +2,12 @@ package com.demo.mappingsdemo.onetomany.service;
 
 import com.demo.mappingsdemo.exception.BookNotFoundException;
 import com.demo.mappingsdemo.onetomany.dao.BookDao;
+import com.demo.mappingsdemo.onetomany.dao.PageDao;
 import com.demo.mappingsdemo.onetomany.dto.BookDto;
+import com.demo.mappingsdemo.onetomany.dto.PageDto;
 import com.demo.mappingsdemo.onetomany.mapper.BookMapper;
+import com.demo.mappingsdemo.onetomany.mapper.PageMapper;
 import com.demo.mappingsdemo.onetomany.model.Book;
-import com.demo.mappingsdemo.onetomany.model.Page;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,10 @@ public class BookService {
   private final BookDao bookDao;
 
   private final BookMapper bookMapper;
+
+  private final PageMapper pageMapper;
+
+  private final PageDao pageDao;
 
   public BookDto createBook(BookDto bookDto){
     Book book = bookMapper.map(bookDto);
@@ -52,8 +58,13 @@ public class BookService {
   }
 
   public List<BookDto> getAllBooks(){
-    List<Book> carlist = bookDao.findAll();
-    return bookMapper.map(carlist);
+    List<Book> carList = bookDao.findAll();
+    return bookMapper.map(carList);
   }
+
+  public List<PageDto> getAllPagesByBook(Long bookId){
+    return pageMapper.map(pageDao.getAllPagesByBook(bookId));
+  }
+
 
 }

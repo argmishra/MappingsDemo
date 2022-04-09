@@ -5,12 +5,8 @@ import com.demo.mappingsdemo.onetoone.dto.DriverDto;
 import com.demo.mappingsdemo.onetoone.service.CarService;
 import com.demo.mappingsdemo.onetoone.service.DriverService;
 import java.util.List;
-import org.springframework.cache.annotation.Cacheable;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -61,7 +57,7 @@ public class CarController {
   }
 
   @PostMapping("/{carId}/driver")
-  public ResponseEntity<DriverDto> createCar(@RequestBody DriverDto driverDto, @PathVariable Long carId){
+  public ResponseEntity<DriverDto> createDriver(@RequestBody DriverDto driverDto, @PathVariable Long carId){
     log.info("Create Driver Request for carId : {}", carId);
     DriverDto driver = driverService.createDriver(carId, driverDto);
     return new ResponseEntity<>(driver, HttpStatus.CREATED);
@@ -73,5 +69,9 @@ public class CarController {
     List<CarDto> catList = carService.getAllCar();
     return new ResponseEntity<>(catList, HttpStatus.OK);
   }
+
+  // Add driver to car - Possible by createDriver method
+  // Get all drivers of car - Not Possible as one Car can have only one driver
+  // Delete driver from card  - Possible by deleting driver
 
 }

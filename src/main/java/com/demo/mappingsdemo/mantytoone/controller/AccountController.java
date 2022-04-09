@@ -1,6 +1,7 @@
 package com.demo.mappingsdemo.mantytoone.controller;
 
 import com.demo.mappingsdemo.mantytoone.dto.AccountDto;
+import com.demo.mappingsdemo.mantytoone.dto.BranchDto;
 import com.demo.mappingsdemo.mantytoone.service.AccountService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -51,6 +52,16 @@ public class AccountController {
     return new ResponseEntity<>(accountList, HttpStatus.OK);
   }
 
+  @GetMapping("/{accountId}/branch")
+  public ResponseEntity<BranchDto> getBranchByAccount(@PathVariable Long accountId){
+    log.info("Get Branch Request for account id : {}", accountId);
+    BranchDto branch = accountService.getBranchByAccount(accountId);
+    return new ResponseEntity<>(branch, HttpStatus.OK);
+  }
+
+  // Add account to branch - Possible by createAccount method
+  // Get all branch by account - Possible by getBranchByAccount method
+  // Delete branch from account - Not Possible as branch is parent entity
 
 
 }

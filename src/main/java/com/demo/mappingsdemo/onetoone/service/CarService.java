@@ -50,8 +50,13 @@ public class CarService {
   }
 
   public List<CarDto> getAllCar(){
-    List<Car> carlist = carDao.findAll();
-    return carMapper.map(carlist);
+    List<Car> carList = carDao.findAll();
+    return carMapper.map(carList);
+  }
+
+  public CarDto getCarsByDriver(Long driverId){
+   Car car = carDao.getCarsByDriver(driverId);
+   return carMapper.map(car);
   }
 
 }

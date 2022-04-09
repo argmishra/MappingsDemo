@@ -1,5 +1,6 @@
 package com.demo.mappingsdemo.onetomany.controller;
 
+import com.demo.mappingsdemo.onetomany.dto.BookDto;
 import com.demo.mappingsdemo.onetomany.dto.PageDto;
 import com.demo.mappingsdemo.onetomany.service.PageService;
 import lombok.RequiredArgsConstructor;
@@ -42,4 +43,15 @@ public class PageController {
     pageService.deletePage(pageId);
     return new ResponseEntity(HttpStatus.OK);
   }
+
+  @GetMapping("/{pageId}/book")
+  public ResponseEntity<BookDto> getBookFromPage(@PathVariable Long pageId){
+    log.info("Get Book Request for page id : {}", pageId);
+    BookDto book = pageService.getBookFromPage(pageId);
+    return new ResponseEntity<>(book, HttpStatus.OK);
+  }
+
+  // Delete book from page - Not Possible as book is parent entity
+  // Get all books from page - Possible using getBookFromPage method
+
 }

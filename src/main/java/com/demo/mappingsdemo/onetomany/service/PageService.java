@@ -2,7 +2,9 @@ package com.demo.mappingsdemo.onetomany.service;
 
 import com.demo.mappingsdemo.exception.PageNotFoundException;
 import com.demo.mappingsdemo.onetomany.dao.PageDao;
+import com.demo.mappingsdemo.onetomany.dto.BookDto;
 import com.demo.mappingsdemo.onetomany.dto.PageDto;
+import com.demo.mappingsdemo.onetomany.mapper.BookMapper;
 import com.demo.mappingsdemo.onetomany.mapper.PageMapper;
 import com.demo.mappingsdemo.onetomany.model.Book;
 import com.demo.mappingsdemo.onetomany.model.Page;
@@ -21,6 +23,8 @@ public class PageService {
   public final BookService bookService;
 
   public final PageMapper pageMapper;
+
+  public final BookMapper bookMapper;
 
   public PageDto createPage(Long bookId, PageDto pageDto){
     Book book = bookService.getBookById(bookId);
@@ -51,5 +55,12 @@ public class PageService {
     page.orElseThrow(() -> new PageNotFoundException("Page id "+ pageId + " not found" ));
     return page.get();
   }
+
+  public BookDto getBookFromPage(Long pageId){
+    Page page = getPageById(pageId);
+    Book book = bookService.getBookById(page.getBook().getId());
+    return bookMapper.map(book);
+  }
+
 
 }

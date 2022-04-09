@@ -11,7 +11,9 @@ import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity(name = "driver")
 @Data
@@ -31,6 +33,8 @@ public class Driver {
   @Column(name = "age")
   private Long age;
 
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   @OneToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "car_id", nullable = false)
   private Car car;

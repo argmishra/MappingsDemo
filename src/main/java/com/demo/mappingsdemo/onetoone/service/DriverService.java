@@ -3,6 +3,7 @@ package com.demo.mappingsdemo.onetoone.service;
 import com.demo.mappingsdemo.exception.DriverNotFoundException;
 import com.demo.mappingsdemo.onetoone.dao.CarDao;
 import com.demo.mappingsdemo.onetoone.dao.DriverDao;
+import com.demo.mappingsdemo.onetoone.dto.CarDto;
 import com.demo.mappingsdemo.onetoone.dto.DriverDto;
 import com.demo.mappingsdemo.onetoone.mapper.DriverMapper;
 import com.demo.mappingsdemo.onetoone.model.Car;
@@ -52,4 +53,9 @@ public class DriverService {
     driver.orElseThrow(() -> new DriverNotFoundException("Driver id "+ driverId + " not found" ));
     return driver.get();
   }
+
+  public CarDto getCarsByDriver(Long driverId){
+    return carService.getCarsByDriver(driverId);
+  }
+
 }

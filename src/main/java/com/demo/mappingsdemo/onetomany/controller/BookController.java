@@ -70,4 +70,15 @@ public class BookController {
     return new ResponseEntity<>(bookList, HttpStatus.OK);
   }
 
+  @GetMapping("/{bookId}/pages")
+  public ResponseEntity<List<PageDto>> getAllPagesByBook(@PathVariable Long bookId){
+    log.info("Get All Pages for Book id : {} ", bookId);
+    List<PageDto> pageList = bookService.getAllPagesByBook(bookId);
+    return new ResponseEntity<>(pageList, HttpStatus.OK);
+  }
+
+  // Add Page to Book - Possible by createPage method
+  // Get all pages of book - Possible by getAllPagesByBook method
+  // Delete page from book - Possible by deletePage method
+
 }

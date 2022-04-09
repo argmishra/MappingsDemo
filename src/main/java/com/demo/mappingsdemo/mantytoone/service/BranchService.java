@@ -1,8 +1,10 @@
 package com.demo.mappingsdemo.mantytoone.service;
 
+import com.demo.mappingsdemo.mantytoone.dao.AccountDao;
 import com.demo.mappingsdemo.mantytoone.dao.BranchDao;
 import com.demo.mappingsdemo.mantytoone.dto.AccountDto;
 import com.demo.mappingsdemo.mantytoone.dto.BranchDto;
+import com.demo.mappingsdemo.mantytoone.mapper.AccountMapper;
 import com.demo.mappingsdemo.mantytoone.mapper.BranchMapper;
 import com.demo.mappingsdemo.mantytoone.model.Account;
 import com.demo.mappingsdemo.mantytoone.model.Branch;
@@ -19,6 +21,10 @@ public class BranchService {
   private final BranchDao branchDao;
 
   private final BranchMapper branchMapper;
+
+  private final AccountDao accountDao;
+
+  private final AccountMapper accountMapper;
 
   public BranchDto createBranch(BranchDto BranchDto){
     Branch branch = branchMapper.map(BranchDto);
@@ -42,6 +48,12 @@ public class BranchService {
   public List<BranchDto> getAllBranch(){
     List<Branch> branchList = branchDao.findAll();
     return branchMapper.map(branchList);
+  }
+
+  public AccountDto getAccountByBranch(Long branchId){
+    Account account = accountDao.getAccountByBranchId(branchId);
+    return accountMapper.map(account);
+
   }
 
 }

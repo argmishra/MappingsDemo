@@ -1,17 +1,11 @@
 package com.demo.mappingsdemo.mantytoone.mapper;
 
 import com.demo.mappingsdemo.mantytoone.dto.AccountDto;
-import com.demo.mappingsdemo.mantytoone.dto.BranchDto;
 import com.demo.mappingsdemo.mantytoone.model.Account;
-import com.demo.mappingsdemo.onetoone.dto.CarDto;
-import com.demo.mappingsdemo.onetoone.model.Car;
 import java.util.List;
-import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
-import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring")
 public interface AccountMapper {

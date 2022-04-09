@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,4 +43,15 @@ public class DriverController {
     driverService.deleteDriver(driverId);
     return new ResponseEntity(HttpStatus.OK);
   }
+
+  @GetMapping("/{driverId}/cars")
+  public ResponseEntity<CarDto> getCarsByDriver(@PathVariable Long driverId){
+    log.info("Get Car Request for driver id : {}", driverId);
+    CarDto car = driverService.getCarsByDriver(driverId);
+    return new ResponseEntity<>(car, HttpStatus.OK);
+  }
+
+  // Delete car from driver - Not Possible as car is parent entity
+  // Get all cars by driver - Possible by getCarsByDriver method
+
 }
